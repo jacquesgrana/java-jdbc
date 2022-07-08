@@ -12,26 +12,40 @@ public class RunTest01 {
 	private static final String DB_USER = "admin";
 	private static final String DB_PW = "Ktoto1956";
 	
-	private static final String REQ_AFF_ARTICLE = "SELECT * FROM ARTICLE";
+	private static final String REQ_AFF_ART = "SELECT * FROM ARTICLE";
+	private static final String REQ_AFF_FOU = "SELECT * FROM FOURNISSEUR";
 	
 	public static void main(String[] args) {
 		
 		try {
-			Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PW);
+			Connection connection1 = DriverManager.getConnection(DB_URL, DB_USER, DB_PW);
 			System.out.println("Connection ok !\n");
 			
-			PreparedStatement statement = connection.prepareStatement(REQ_AFF_ARTICLE);
-			ResultSet resultSet = statement.executeQuery();
+			PreparedStatement statement1 = connection1.prepareStatement(REQ_AFF_ART);
+			ResultSet resultSet1 = statement1.executeQuery();
 			
-			while (resultSet.next()) {
-				String id = resultSet.getString(1);
-				String design = resultSet.getString(3);
-				Double prix = resultSet.getDouble(4);
+			while (resultSet1.next()) {
+				String id = resultSet1.getString(1);
+				String design = resultSet1.getString(3);
+				Double prix = resultSet1.getDouble(4);
 				
 				System.out.println(id + " / " + design + " / " + prix);
 			}
+			//connection1.close();
 			
-			connection.close();
+			
+			PreparedStatement statement2 = connection1.prepareStatement(REQ_AFF_FOU);
+			ResultSet resultSet2 = statement2.executeQuery();
+			
+			System.out.println("\n");
+			while (resultSet2.next()) {
+				String id = resultSet2.getString(1);
+				String nom = resultSet2.getString(2);
+				
+				System.out.println(id + " / " + nom);
+			}
+			
+			connection1.close();
 		} 
 		catch (SQLException e) {
 			System.out.println("Connection ko !");
