@@ -32,6 +32,8 @@ public class RunTest01 {
 				
 				System.out.println(id + " / " + design + " / " + prix);
 			}
+			resultSet1.close();
+			statement1.close();
 			//connection1.close();
 			
 			
@@ -45,6 +47,8 @@ public class RunTest01 {
 				
 				System.out.println(id + " / " + nom);
 			}
+			resultSet2.close();
+			statement2.close();
 			
 			connection1.close();
 		} 
