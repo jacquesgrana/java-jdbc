@@ -65,7 +65,8 @@ public class TestConnexionJdbc {
 			}
 			//System.out.println("Connection locale ok !\n");
 			//System.out.println("connection : " + connection3 + "\n");
-		} catch (Exception e) {
+		} 
+		catch (Exception e) {
 			System.out.println("Connection locale ko ! : " + e.getMessage());
 		}
 		
