@@ -11,7 +11,7 @@ public class Fournisseur {
 	 * @param nom
 	 */
 	public Fournisseur(Integer id, String nom) {
-		super();
+		//super();
 		this.id = id;
 		this.nom = nom;
 	}
@@ -20,9 +20,8 @@ public class Fournisseur {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Fournisseur : id : ");
 		builder.append(id);
-		builder.append(" / nom : ");
+		builder.append(" / ");
 		builder.append(nom);
 		return builder.toString();
 	}

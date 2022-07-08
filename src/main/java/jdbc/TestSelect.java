@@ -48,7 +48,8 @@ public class TestSelect {
 		if(fournisseurs.size() > 0) {
 			System.out.println("Liste des fournisseurs chargée : \n");
 			for(Fournisseur fou : fournisseurs) {
-				System.out.println(fou.getId() + " / " + fou.getNom());
+				//System.out.println(fou.getId() + " / " + fou.getNom());
+				System.out.println(fou.toString());
 			}
 		}
 
