@@ -24,10 +24,11 @@ public class RunTest01 {
 			PreparedStatement statement1 = connection1.prepareStatement(REQ_AFF_ART);
 			ResultSet resultSet1 = statement1.executeQuery();
 			
+			System.out.println("Articles : \n");
 			while (resultSet1.next()) {
-				String id = resultSet1.getString(1);
-				String design = resultSet1.getString(3);
-				Double prix = resultSet1.getDouble(4);
+				String id = resultSet1.getString("ID");
+				String design = resultSet1.getString("DESIGNATION");
+				Double prix = resultSet1.getDouble("PRIX");
 				
 				System.out.println(id + " / " + design + " / " + prix);
 			}
@@ -37,10 +38,10 @@ public class RunTest01 {
 			PreparedStatement statement2 = connection1.prepareStatement(REQ_AFF_FOU);
 			ResultSet resultSet2 = statement2.executeQuery();
 			
-			System.out.println("\n");
+			System.out.println("\n\nFournisseurs : \n");
 			while (resultSet2.next()) {
-				String id = resultSet2.getString(1);
-				String nom = resultSet2.getString(2);
+				String id = resultSet2.getString("ID");
+				String nom = resultSet2.getString("NOM");
 				
 				System.out.println(id + " / " + nom);
 			}
