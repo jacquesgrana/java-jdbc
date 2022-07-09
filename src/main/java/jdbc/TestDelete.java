@@ -11,7 +11,7 @@ public class TestDelete {
 	private static final String CL_USER;
 	private static final String CL_PW;
 	
-	private static final String REQ_DELETE_FOU = "DELETE FROM FOURNISSEUR WHERE NOM='La Maison des Peintures'"; //VALUES (4, 'La Maison de la Peinture')
+	private static final String REQ_DELETE_FOU = "DELETE FROM FOURNISSEUR WHERE NOM='L''espace création'"; //VALUES (4, 'La Maison de la Peinture')
 	
 	static {
 

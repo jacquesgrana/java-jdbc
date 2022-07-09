@@ -16,7 +16,7 @@ public class TestSelect {
 	private static final String CL_USER;
 	private static final String CL_PW;
 	
-	private static final String REQ_INSERT_FOU = "SELECT * FROM FOURNISSEUR";
+	private static final String REQ_SELECT_FOU = "SELECT * FROM FOURNISSEUR";
 	
 	private static List<Fournisseur> fournisseurs = new ArrayList<>();
 	
@@ -32,7 +32,7 @@ public class TestSelect {
 		
 		try (Connection connection = DriverManager.getConnection(CL_URL, CL_USER, CL_PW);
 				Statement st = connection.createStatement();
-				ResultSet rs = st.executeQuery(REQ_INSERT_FOU)) {
+				ResultSet rs = st.executeQuery(REQ_SELECT_FOU)) {
 			while (rs.next()) {
 				Integer id = rs.getInt("ID");
 				String nom = rs.getString("NOM");
