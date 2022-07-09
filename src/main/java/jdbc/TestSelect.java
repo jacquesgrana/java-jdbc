@@ -23,9 +23,9 @@ public class TestSelect {
 	static {
 
 		ResourceBundle bundleCloud = ResourceBundle.getBundle("cloud");
-		CL_URL = bundleCloud.getString("cloud.url");
-		CL_USER = bundleCloud.getString("cloud.user");
-		CL_PW = bundleCloud.getString("cloud.pw");
+		CL_URL = bundleCloud.getString("database.url");
+		CL_USER = bundleCloud.getString("database.user");
+		CL_PW = bundleCloud.getString("database.pw");
 	}
 	
 	public static void main(String[] args) {
