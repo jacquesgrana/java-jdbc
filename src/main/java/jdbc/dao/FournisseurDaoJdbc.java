@@ -42,6 +42,9 @@ public class FournisseurDaoJdbc implements FournisseurDao{
 			if (fournisseurs.size() > 0) {
 				System.out.println("chargement de la liste ok");
 			}
+			else {
+				System.out.println("chargement de la liste ko");
+			}
 			
 		} 
 		catch (Exception e) {
@@ -56,71 +59,67 @@ public class FournisseurDaoJdbc implements FournisseurDao{
 
 	@Override
 	public void insert(Fournisseur fournisseur) {
-		int result = 0;
+		//int result = 0;
 		StringBuilder buider = new StringBuilder();
 		String req = buider.append("INSERT INTO FOURNISSEUR VALUES (").append(fournisseur.getId()).append(", '").append(fournisseur.getNom()).append("');").toString();
-		try (Connection connection = DriverManager.getConnection(CL_URL, CL_USER, CL_PW);
-			Statement st = connection.createStatement();) {
-			result = st.executeUpdate(req);
-			
-			if(result == 1) {
-				System.out.println("Insertion ok");
-			}
-			else {
-				System.out.println("Insertion ko");
-			}
-			
-		} 
-		catch (Exception e) {
-			System.out.println("Connection cloud ko ! : " + e.getMessage());
-		}		
+		int result = connectAndExecUpdate(req);
+		
+		if(result == 1) {
+			System.out.println("Insertion ok");
+		}
+		else {
+			System.out.println("Insertion ko");
+		}
 	}
 
 	@Override
 	public int update(String ancienNom, String nouveauNom) {
-		int result = 0;
+		//int result = 0;
 		StringBuilder buider = new StringBuilder();
 		String req = buider.append("UPDATE FOURNISSEUR SET NOM='").append(nouveauNom).append("' WHERE NOM='").append(ancienNom).append("';").toString();
-		try (Connection connection = DriverManager.getConnection(CL_URL, CL_USER, CL_PW);
-				Statement st = connection.createStatement();) {
-			result = st.executeUpdate(req);
-			
-			if(result == 1) {
-				System.out.println("Update ok");
-			}
-			else {
-				System.out.println("Update ko");
-			}
-			
-		} 
-		catch (Exception e) {
-			System.out.println("Connection cloud ko ! : " + e.getMessage());
+		int result = connectAndExecUpdate(req);
+		
+		if(result >= 1) {
+			System.out.println("Update ok");
+		}
+		else {
+			System.out.println("Update ko");
 		}
 		return result;
 	}
+
 
 	@Override
 	public boolean delete(Fournisseur fournisseur) {
 		StringBuilder buider = new StringBuilder();
 		String req = buider.append("DELETE FROM FOURNISSEUR WHERE NOM='").append(fournisseur.getNom()).append("' AND ID=").append(fournisseur.getId()).append(";").toString();
+		int result = connectAndExecUpdate(req);
+		
+		if(result == 1) {
+			System.out.println("Delete ok");
+			return true;
+		}
+		else {
+			System.out.println("Delete ko");
+			return false;
+		}
+	}
+	
+	/**
+	 * 
+	 * @param req
+	 * @return
+	 */
+	private int connectAndExecUpdate(String req) {
+		int result = 0;
 		try (Connection connection = DriverManager.getConnection(CL_URL, CL_USER, CL_PW);
-				Statement st = connection.createStatement();) {
-			int result = st.executeUpdate(req);
-			
-			if(result == 1) {
-				System.out.println("Delete ok");
-				return true;
-			}
-			else {
-				System.out.println("Delete ko");
-				return false;
-			}
-			
+				Statement st = connection.createStatement()) {
+			result = st.executeUpdate(req);			
 		} 
 		catch (Exception e) {
 			System.out.println("Connection cloud ko ! : " + e.getMessage());
 		}
-		return false;
+		return result;
 	}
 
 }
