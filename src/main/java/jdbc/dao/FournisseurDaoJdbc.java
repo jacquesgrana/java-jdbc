@@ -17,11 +17,6 @@ public class FournisseurDaoJdbc implements FournisseurDao{
 	private static final String CL_PW;
 	
 	private static final String REQ_SELECT_FOU = "SELECT * FROM FOURNISSEUR;";
-	//private static final String REQ_INSERT_FOU = "INSERT INTO FOURNISSEUR VALUES (4, 'La Maison de la Peinture');";
-	//private static final String REQ_UPDATE_FOU = "UPDATE FOURNISSEUR SET NOM='La Maison des Peintures' WHERE NOM='La Maison de la Peinture';";
-	//private static final String REQ_DELETE_FOU = "DELETE FROM FOURNISSEUR WHERE NOM='La Maison des Peintures';";
-	
-	//private static List<Fournisseur> fournisseurs = new ArrayList<>();
 	
 	static {
 

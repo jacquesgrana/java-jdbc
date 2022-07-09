@@ -14,13 +14,15 @@ public class TestDao {
 		fournisseurs = dao.extraire();
 		displayList(fournisseurs);
 		
-		Fournisseur fou = new Fournisseur(4, "L''espace création");
+		int id = 4;
+		String nom = "L''espace création";
+		Fournisseur fou = new Fournisseur(id, nom);
 		dao.insert(fou);
 		fournisseurs = dao.extraire();
 		displayList(fournisseurs);
 		
 		String nouveauNom = "Monoprix";
-		dao.update("L''espace création", nouveauNom);
+		dao.update(nom, nouveauNom);
 		fournisseurs = dao.extraire();
 		displayList(fournisseurs);
 		

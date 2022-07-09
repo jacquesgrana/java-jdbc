@@ -16,6 +16,17 @@ public class Fournisseur {
 		this.nom = nom;
 	}
 
+	/**
+	 * 
+	 * @param fou
+	 * @return
+	 */
+	public boolean equals(Fournisseur fou) {
+	if ( ( this.nom.equals(fou.getNom()) ) && ( this.id == fou.getId() ) ) {
+			return true;
+		}
+		return false;
+	}
 
 	@Override
 	public String toString() {
