@@ -22,7 +22,8 @@ public class ArticleDaoPrepStat implements ArticleDao{
 	private static final String REQ_UPDATE_ART = "UPDATE ARTICLE SET NOM = ? WHERE NOM = ?;";
 	private static final String REQ_DELETE_ART = "DELETE FROM ARTICLE WHERE ID = ?;";
 	
-	private static final String REQ_SELECT_FOU_BY_ID = "SELECT NOM FROM FOURNISSEUR WHERE ID = ?;"; 
+	private static final String REQ_SELECT_FOU_BY_ID = "SELECT NOM FROM FOURNISSEUR WHERE ID = ?;";
+	private static final String REQ_UPDATE_ART_PRIX_PEINTURE_MATE = "UPDATE ARTICLE SET PRIX = CAST(PRIX * 0.75 AS DECIMAL(7,2)) WHERE UPPER(DESIGNATION) LIKE '%PEINTURE%MATE%';";
 	
 	static {
 
@@ -57,11 +58,6 @@ public class ArticleDaoPrepStat implements ArticleDao{
 			
 			
 			if (articles.size() > 0) {
-				// TODO boucle sur articles
-				// TODO pour chaque article --> requete pour recup le nom du fournisseur
-				// TODO insertion du nom dans la liste
-				
-				
 				System.out.println("\nchargement de la liste ok");
 			}
 			else {

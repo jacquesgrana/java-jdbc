@@ -25,7 +25,6 @@ public class TestJdbcArticles {
 		fournisseurs = daoFou.extraire();
 		displayListFou(fournisseurs);
 		
-		
 		daoArt.insert(new Article((Integer) (11),"M01", "Peinture blanche 1L", 12.5f, fou));
 		daoArt.insert(new Article((Integer) (12),"M02", "Peinture rouge mate 1L", 15.5f, fou));
 		daoArt.insert(new Article((Integer) (13),"M03", "Peinture noire laquée 1L", 17.8f, fou));
@@ -33,6 +32,7 @@ public class TestJdbcArticles {
 		articles = daoArt.extraire();
 		displayListArt(articles);
 		
+		// TODO finir ********************************************************************
 		
 		/*
 		int id = 4;
