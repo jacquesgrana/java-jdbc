@@ -3,31 +3,30 @@ package demoJdbc;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class TestConnexionJdbc {
-
+/*
 	private static final String DB_URL;
 	private static final String DB_USER;
 	private static final String DB_PW;
-
+*/
 	private static final String CL_URL;
 	private static final String CL_USER;
 	private static final String CL_PW;
 
 	static {
-
+/*
 		ResourceBundle bundle = ResourceBundle.getBundle("database");
 		DB_URL = bundle.getString("database.url");
 		DB_USER = bundle.getString("database.username");
 		DB_PW = bundle.getString("database.password");
-
+*/
 		ResourceBundle bundleCloud = ResourceBundle.getBundle("cloud");
-		CL_URL = bundleCloud.getString("cloud.url");
-		CL_USER = bundleCloud.getString("cloud.user");
-		CL_PW = bundleCloud.getString("cloud.pw");
+		CL_URL = bundleCloud.getString("database.url");
+		CL_USER = bundleCloud.getString("database.user");
+		CL_PW = bundleCloud.getString("database.pw");
 		// System.out.println("url : " + CL_URL + " / user : " + CL_USER + " / pw : " +
 		// CL_PW);
 	}

@@ -4,14 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import entites.Fournisseur;
-import jdbc.dao.FournisseurDAOPrepStat;
-import jdbc.dao.FournisseurDaoJdbc;
+import jdbc.dao.FournisseurDaoPrepStat;
 
 public class TestPreparedStatement {
 
 	public static void main(String[] args) {
 		List<Fournisseur> fournisseurs = new ArrayList<>();
-		FournisseurDAOPrepStat dao = new FournisseurDAOPrepStat();
+		FournisseurDaoPrepStat dao = new FournisseurDaoPrepStat();
 		fournisseurs = dao.extraire();
 		displayList(fournisseurs);
 		

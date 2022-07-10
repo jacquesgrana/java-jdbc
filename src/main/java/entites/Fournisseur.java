@@ -31,9 +31,10 @@ public class Fournisseur {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append(id);
-		builder.append(" / ");
-		builder.append(nom);
+		builder.append("id : ");
+		builder.append(this.id);
+		builder.append(" / nom : ");
+		builder.append(this.nom);
 		return builder.toString();
 	}
 
@@ -42,7 +43,7 @@ public class Fournisseur {
 	 * @return the id
 	 */
 	public Integer getId() {
-		return id;
+		return this.id;
 	}
 
 
@@ -58,7 +59,7 @@ public class Fournisseur {
 	 * @return the nom
 	 */
 	public String getNom() {
-		return nom;
+		return this.nom;
 	}
 
 

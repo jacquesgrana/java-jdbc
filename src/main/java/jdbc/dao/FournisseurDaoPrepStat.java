@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 
 import entites.Fournisseur;
 
-public class FournisseurDAOPrepStat implements FournisseurDao{
+public class FournisseurDaoPrepStat implements FournisseurDao{
 
 	private static final String DB_URL;
 	private static final String DB_USER;
@@ -76,10 +76,10 @@ public class FournisseurDAOPrepStat implements FournisseurDao{
 		}
 		
 		if(result == 1) {
-			System.out.println("\n\nInsertion ok");
+			System.out.println("\n\nInsertion fournisseur ok");
 		}
 		else {
-			System.out.println("Insertion ko");
+			System.out.println("Insertion fournisseur ko");
 		}
 	}
 
