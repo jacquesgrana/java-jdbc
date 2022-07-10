@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -13,9 +12,9 @@ import entites.Fournisseur;
 
 public class FournisseurDAOPrepStat implements FournisseurDao{
 
-	private static final String CL_URL;
-	private static final String CL_USER;
-	private static final String CL_PW;
+	private static final String DB_URL;
+	private static final String DB_USER;
+	private static final String DB_PW;
 	
 	private static final String REQ_SELECT_FOU = "SELECT * FROM FOURNISSEUR;";
 	private static final String REQ_INSERT_FOU = "INSERT INTO FOURNISSEUR VALUES (?, ?);";
@@ -24,17 +23,17 @@ public class FournisseurDAOPrepStat implements FournisseurDao{
 	
 	static {
 
-		ResourceBundle bundleCloud = ResourceBundle.getBundle("cloud");
-		CL_URL = bundleCloud.getString("database.url");
-		CL_USER = bundleCloud.getString("database.user");
-		CL_PW = bundleCloud.getString("database.pw");
+		ResourceBundle bundle = ResourceBundle.getBundle("cloud");
+		DB_URL = bundle.getString("database.url");
+		DB_USER = bundle.getString("database.user");
+		DB_PW = bundle.getString("database.pw");
 	}
 	
 	@Override
 	public List<Fournisseur> extraire() {
 		
 		List<Fournisseur> fournisseurs = new ArrayList<>();
-		try (Connection connection = DriverManager.getConnection(CL_URL, CL_USER, CL_PW);
+		try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PW);
 			PreparedStatement st = connection.prepareStatement(REQ_SELECT_FOU);
 			ResultSet rs = st.executeQuery()
 		){
@@ -65,7 +64,7 @@ public class FournisseurDAOPrepStat implements FournisseurDao{
 	@Override
 	public void insert(Fournisseur fou) {
 		int result = 0;
-		try (Connection connection = DriverManager.getConnection(CL_URL, CL_USER, CL_PW);
+		try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PW);
 			PreparedStatement prepStat = connection.prepareStatement(REQ_INSERT_FOU);
 			){
 			prepStat.setInt(1, fou.getId());
@@ -87,11 +86,7 @@ public class FournisseurDAOPrepStat implements FournisseurDao{
 	@Override
 	public int update(String ancienNom, String nouveauNom) {
 		int result = 0;
-		//StringBuilder buider = new StringBuilder();
-		//String req = buider.append("UPDATE FOURNISSEUR SET NOM='").append(nouveauNom).append("' WHERE NOM='").append(ancienNom).append("';").toString();
-		//int result = connectAndExecUpdate(req);
-		
-		try (Connection connection = DriverManager.getConnection(CL_URL, CL_USER, CL_PW);
+		try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PW);
 			PreparedStatement prepStat = connection.prepareStatement(REQ_UPDATE_FOU);
 			){
 			prepStat.setString(1, nouveauNom);
@@ -115,13 +110,7 @@ public class FournisseurDAOPrepStat implements FournisseurDao{
 	@Override
 	public boolean delete(Fournisseur fou) {
 		int result = 0;
-		//StringBuilder buider = new StringBuilder();
-		//String req = buider.append("DELETE FROM FOURNISSEUR WHERE NOM='").append(fournisseur.getNom()).append("' AND ID=").append(fournisseur.getId()).append(";").toString();
-		//int result = connectAndExecUpdate(req);
-		//Integer id = rs.getInt("ID");
-		//String nom = rs.getString("NOM");
-		
-		try (Connection connection = DriverManager.getConnection(CL_URL, CL_USER, CL_PW);
+		try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PW);
 				PreparedStatement prepStat = connection.prepareStatement(REQ_DELETE_FOU);
 				){
 				prepStat.setInt(1, fou.getId());
