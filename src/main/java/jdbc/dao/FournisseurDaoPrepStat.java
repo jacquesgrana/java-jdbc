@@ -20,6 +20,7 @@ public class FournisseurDaoPrepStat implements FournisseurDao{
 	private static final String REQ_INSERT_FOU = "INSERT INTO FOURNISSEUR VALUES (?, ?);";
 	private static final String REQ_UPDATE_FOU = "UPDATE FOURNISSEUR SET NOM = ? WHERE NOM = ?;";
 	private static final String REQ_DELETE_FOU = "DELETE FROM FOURNISSEUR WHERE ID = ? AND NOM = ?;";
+	private static final String REQ_DELETE_FOU_BY_NAME = "DELETE FROM FOURNISSEUR WHERE NOM = ?;";
 	
 	static {
 
@@ -44,10 +45,10 @@ public class FournisseurDaoPrepStat implements FournisseurDao{
 				fournisseurs.add(fou);
 			}
 			if (fournisseurs.size() > 0) {
-				System.out.println("\nchargement de la liste ok");
+				System.out.println("\nchargement de la liste des fournisseurs ok");
 			}
 			else {
-				System.out.println("\nchargement de la liste ko");
+				System.out.println("\nchargement de la liste des fournisseurs ko");
 			}
 			
 		} 
@@ -79,7 +80,7 @@ public class FournisseurDaoPrepStat implements FournisseurDao{
 			System.out.println("\n\nInsertion fournisseur ok");
 		}
 		else {
-			System.out.println("Insertion fournisseur ko");
+			System.out.println("\n\nInsertion fournisseur ko");
 		}
 	}
 
@@ -98,10 +99,10 @@ public class FournisseurDaoPrepStat implements FournisseurDao{
 		}
 		
 		if(result >= 1) {
-			System.out.println("\n\nUpdate ok");
+			System.out.println("\n\nUpdate fournisseur ok");
 		}
 		else {
-			System.out.println("\n\nUpdate ko");
+			System.out.println("\n\nUpdate fournisseur ko");
 		}
 		return result;
 	}
@@ -122,33 +123,35 @@ public class FournisseurDaoPrepStat implements FournisseurDao{
 			}
 		
 		if(result == 1) {
-			System.out.println("\n\nDelete ok");
+			System.out.println("\n\nDelete fournisseur ok");
 			return true;
 		}
 		else {
-			System.out.println("Delete ko");
+			System.out.println("Delete fournisseur ko");
 			return false;
 		}
 	}
 	
-	/**
-	 * 
-	 * @param req
-	 * @return
-	 */
-	/*
-	private int connectAndExecUpdate(String req) {
+	public boolean deleteByName(String name) {
 		int result = 0;
-		try (Connection connection = DriverManager.getConnection(CL_URL, CL_USER, CL_PW);
-				Statement st = connection.createStatement()
-						//PreparedStatement st = connection.prepareStatement(REQ_SELECT_FOU)
-						){
-			result = st.executeUpdate(req);			
-		} 
-		catch (Exception e) {
-			System.out.println("Connection cloud ko ! : " + e.getMessage());
+		try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PW);
+				PreparedStatement prepStat = connection.prepareStatement(REQ_DELETE_FOU_BY_NAME);
+				){
+				prepStat.setString(1, name);
+				result = prepStat.executeUpdate();			
+			} 
+			catch (Exception e) {
+				System.out.println("Connection cloud ko ! : " + e.getMessage());
+			}
+		
+		if(result == 1) {
+			System.out.println("\n\nDelete fournisseur selon le nom : " + name + " ok");
+			return true;
 		}
-		return result;
-	}*/
+		else {
+			System.out.println("\n\nDelete fournisseur selon le nom : " + name + " ko");
+			return false;
+		}
+	}
 
 }

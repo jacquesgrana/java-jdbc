@@ -25,6 +25,7 @@ public class TestJdbcArticles {
 		fournisseurs = daoFou.extraire();
 		displayListFou(fournisseurs);
 		
+		
 		daoArt.insert(new Article((Integer) (11),"M01", "Peinture blanche 1L", 12.5f, fou));
 		daoArt.insert(new Article((Integer) (12),"M02", "Peinture rouge mate 1L", 15.5f, fou));
 		daoArt.insert(new Article((Integer) (13),"M03", "Peinture noire laquée 1L", 17.8f, fou));
@@ -35,6 +36,17 @@ public class TestJdbcArticles {
 		daoArt.updatePrixPeintureMate();
 		articles = daoArt.extraire();
 		displayListArt(articles);
+		
+		System.out.println("\n\nMoyenne des prix des articles : " + daoArt.calcMoyPrix());
+		
+		daoArt.deletePeinture();
+		articles = daoArt.extraire();
+		displayListArt(articles);
+		
+		daoFou.deleteByName("La Maison de la Peinture");
+		fournisseurs = daoFou.extraire();
+		displayListFou(fournisseurs);
+		
 		
 		// TODO finir ********************************************************************
 		
