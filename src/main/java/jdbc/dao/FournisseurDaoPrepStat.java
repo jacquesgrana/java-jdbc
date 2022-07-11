@@ -45,10 +45,10 @@ public class FournisseurDaoPrepStat implements FournisseurDao{
 				fournisseurs.add(fou);
 			}
 			if (fournisseurs.size() > 0) {
-				System.out.println("\nchargement de la liste des fournisseurs ok");
+				System.out.println("\nChargement de la liste des fournisseurs ok");
 			}
 			else {
-				System.out.println("\nchargement de la liste des fournisseurs ko");
+				System.out.println("\nChargement de la liste des fournisseurs ko");
 			}
 			
 		} 

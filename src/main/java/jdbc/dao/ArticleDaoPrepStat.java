@@ -46,15 +46,14 @@ public class ArticleDaoPrepStat implements ArticleDao{
 				Float prix = rs.getFloat("PRIX");
 				Integer idFou = rs.getInt("ID_FOU");
 				String nomFou = rs.getNString("NOM_FOU");
-				Fournisseur fou = new Fournisseur(idFou, nomFou);
-				Article art = new Article(id, ref, design, prix, fou);
+				Article art = new Article(id, ref, design, prix, new Fournisseur(idFou, nomFou));
 				articles.add(art);
 			}
 			if (articles.size() > 0) {
-				System.out.println("\nchargement de la liste des articles ok");
+				System.out.println("\nChargement de la liste des articles ok");
 			}
 			else {
-				System.out.println("\nchargement de la liste des articles ko");
+				System.out.println("\nChargement de la liste des articles ko");
 			}
 			
 		} 
