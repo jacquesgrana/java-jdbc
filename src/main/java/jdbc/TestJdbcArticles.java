@@ -32,6 +32,10 @@ public class TestJdbcArticles {
 		articles = daoArt.extraire();
 		displayListArt(articles);
 		
+		daoArt.updatePrixPeintureMate();
+		articles = daoArt.extraire();
+		displayListArt(articles);
+		
 		// TODO finir ********************************************************************
 		
 		/*

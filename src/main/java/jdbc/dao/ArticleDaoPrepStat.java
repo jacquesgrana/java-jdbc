@@ -104,15 +104,55 @@ public class ArticleDaoPrepStat implements ArticleDao{
 
 	@Override
 	public int update(String ancienNom, String nouveauNom) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+		try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PW);
+			PreparedStatement prepStat = connection.prepareStatement(REQ_UPDATE_ART);
+			){
+			prepStat.setString(1, nouveauNom);
+			prepStat.setString(2, ancienNom);
+			result = prepStat.executeUpdate();			
+		} 
+		catch (Exception e) {
+			System.out.println("Connection cloud ko ! : " + e.getMessage());
+		}
+		
+		if(result >= 1) {
+			System.out.println("\n\nUpdate ok");
+		}
+		else {
+			System.out.println("\n\nUpdate ko");
+		}
+		return result;
 	}
+	
+	
 
 	@Override
 	public boolean delete(Article article) {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	public int updatePrixPeintureMate() {
+		int result = 0;
+		try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PW);
+			PreparedStatement prepStat = connection.prepareStatement(REQ_UPDATE_ART_PRIX_PEINTURE_MATE);
+			){
+			result = prepStat.executeUpdate();			
+		} 
+		catch (Exception e) {
+			System.out.println("Connection cloud ko ! : " + e.getMessage());
+		}
+		
+		if(result >= 1) {
+			System.out.println("\n\nUpdate Article ok");
+		}
+		else {
+			System.out.println("\n\nUpdate Article ko");
+		}
+		return result;
+	}
+
 	
 	
 	
