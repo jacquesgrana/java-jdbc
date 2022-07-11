@@ -20,7 +20,7 @@ public class FournisseurJDBCDAO implements IFournisseurDAO {
 		try(
 			PreparedStatement st = connection.prepareStatement(FIND_ALL_QUERY);
 			ResultSet rs = st.executeQuery();
-				) {
+			){
 			
 			while(rs.next()) {
 				//System.out.println(rs.getInt("ID") + " / " + rs.getString("NOM"));
